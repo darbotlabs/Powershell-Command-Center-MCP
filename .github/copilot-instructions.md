@@ -10,6 +10,8 @@ This repository contains the **PowerShell Command Center (PSCC) MCP Connector**,
 - Custom script execution with input file support
 - Output consolidation and retrieval
 - Integration with Exchange Online, SharePoint Online, Azure AD, and more
+- Built-in execution methods for common admin tasks (mailbox stats, user reports, etc.)
+- Config-file based credential management for thread accounts
 
 ## Architecture & Technology Stack
 
@@ -83,6 +85,20 @@ This repository contains the **PowerShell Command Center (PSCC) MCP Connector**,
 - Validate output formatting and consolidation
 
 ### Common Patterns
+
+#### PSCC Connection Patterns
+```powershell
+# Standard PSCC connection methods (from README examples)
+MCC-ConnectMSOL      # Connect to MSOnline
+MCC-ConnectEXO       # Connect to Exchange Online  
+MCC-ConnectCSOM      # Connect to Client Side Object Model (CSOM for SPO)
+MCC-ConnectSPO       # Connect to SharePoint Online
+
+# Custom script section pattern
+#region CUSTOM SCRIPT SECTION - YOU ARE FREE TO MODIFY
+# Custom PowerShell code here
+#endregion
+```
 
 #### Thread Management
 ```powershell
@@ -213,12 +229,37 @@ Install-Module -Name Microsoft.Graph -Force
 Invoke-Pester -Path ./tests/
 ```
 
+## Current Repository State
+
+This repository is in the initial development phase. The main README.md contains the comprehensive project specification and requirements. Key elements to be aware of:
+
+- **Current Status**: Planning and specification phase
+- **Next Steps**: Implementation of MCP connector and PSCC integration
+- **Priority Areas**: Authentication handling, thread management, and MCP command mapping
+
 ## Resources
 
 - PowerShell Command Center documentation in README.md
 - Microsoft Graph PowerShell SDK documentation
 - Exchange Online PowerShell reference
 - MCP specification and examples
+- PowerShell Gallery for module dependencies
+- Azure PowerShell documentation
+
+## Quick Start for Contributors
+
+```powershell
+# Clone and setup development environment
+git clone <repository-url>
+cd Powershell-Command-Center-MCP
+
+# Setup PowerShell environment
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Install development dependencies (when available)
+# Install-Module -Name Pester -Force
+# Install-Module -Name PSScriptAnalyzer -Force
+```
 
 ---
 
